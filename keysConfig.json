@@ -1,0 +1,96 @@
+[
+  [
+    {
+      "key": "Q",
+      "name": "sound name",
+      "sound_path": "assets/sounds/1"
+    },
+    {
+      "key": "W",
+      "name": "sound name",
+      "sound_path": "assets/sounds/1"
+    },
+    {
+      "key": "E",
+      "name": "sound name",
+      "sound_path": "assets/sounds/1"
+    },
+    {
+      "key": "A",
+      "name": "sound name",
+      "sound_path": "assets/sounds/1"
+    },
+    {
+      "key": "S",
+      "name": "sound name",
+      "sound_path": "assets/sounds/1"
+    },
+    {
+      "key": "D",
+      "name": "sound name",
+      "sound_path": "assets/sounds/1"
+    },
+    {
+      "key": "Z",
+      "name": "sound name",
+      "sound_path": "assets/sounds/1"
+    },
+    {
+      "key": "X",
+      "name": "sound name",
+      "sound_path": "assets/sounds/1"
+    },
+    {
+      "key": "C",
+      "name": "sound name",
+      "sound_path": "assets/sounds/1"
+    }
+  ],
+  [
+    {
+      "key": "Q",
+      "name": "sound name",
+      "sound_path": "assets/sounds/1"
+    },
+    {
+      "key": "W",
+      "name": "sound name",
+      "sound_path": "assets/sounds/1"
+    },
+    {
+      "key": "E",
+      "name": "sound name",
+      "sound_path": "assets/sounds/1"
+    },
+    {
+      "key": "A",
+      "name": "sound name",
+      "sound_path": "assets/sounds/1"
+    },
+    {
+      "key": "S",
+      "name": "sound name",
+      "sound_path": "assets/sounds/1"
+    },
+    {
+      "key": "D",
+      "name": "sound name",
+      "sound_path": "assets/sounds/1"
+    },
+    {
+      "key": "Z",
+      "name": "sound name",
+      "sound_path": "assets/sounds/1"
+    },
+    {
+      "key": "X",
+      "name": "sound name",
+      "sound_path": "assets/sounds/1"
+    },
+    {
+      "key": "C",
+      "name": "sound name",
+      "sound_path": "assets/sounds/1"
+    }
+  ]
+]
