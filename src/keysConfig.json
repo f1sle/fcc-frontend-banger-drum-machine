@@ -1,0 +1,53 @@
+{
+  "track": {
+    "path": "assets/tracks/1.mp3",
+    "name": "Skriptonit 'Polozhenie' ( instrumental )"
+  },
+  "keys": [
+    {
+      "key": "Q",
+      "name": "Closed hi-hat chilled E major",
+      "path": "assets/sounds/closed-hi-hat-chilled_E_major.wav"
+    },
+    {
+      "key": "W",
+      "name": "Closed hi-hat metallic",
+      "path": "assets/sounds/closed-hi-hat-metallic.wav"
+    },
+    {
+      "key": "E",
+      "name": "Drum hit-slap-snare E minor",
+      "path": "assets/sounds/drum-hit-slap-snare_E_minor.wav"
+    },
+    {
+      "key": "A",
+      "name": "Kick-shot bassy 140bpm C minor",
+      "path": "assets/sounds/kick-shot-bassy_140bpm_C_minor.wav"
+    },
+    {
+      "key": "S",
+      "name": "Trap drum-808 hi-hat",
+      "path": "assets/sounds/trap-drum-808-hi-hat.wav"
+    },
+    {
+      "key": "D",
+      "name": "Trap drum hollow-clap",
+      "path": "assets/sounds/trap-drum-hollow-clap.wav"
+    },
+    {
+      "key": "Z",
+      "name": "Trap-drum kick",
+      "path": "assets/sounds/trap-drum-kick.wav"
+    },
+    {
+      "key": "X",
+      "name": "Trap drum-muffled-boomy kick",
+      "path": "assets/sounds/trap-drum-muffled-boomy-kick.wav"
+    },
+    {
+      "key": "C",
+      "name": "Trap drum-short-808 bass",
+      "path": "assets/sounds/trap-drum-short-808-bass.wav"
+    }
+  ]
+}

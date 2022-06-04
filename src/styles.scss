@@ -1,6 +1,12 @@
 html {
   width: 100%;
   height: 100%;
+  background-image: linear-gradient(
+    135deg,
+    #112b3c 0%,
+    #251d3a 13.37%,
+    #062c30 100%
+  );
 }
 
 body {
@@ -8,12 +14,7 @@ body {
   margin: 0;
   width: inherit;
   height: inherit;
-  background-image: linear-gradient(
-    135deg,
-    #112b3c 0%,
-    #251d3a 13.37%,
-    #062c30 100%
-  );
+  
 }
 
 * {
@@ -25,32 +26,59 @@ main {
 
 #drum-machine {
   display: grid;
+  position: relative;
   grid-template-areas:
     "header"
-    "display"
+    "track-display"
     "drum-controller";
   grid-template-columns: 1fr;
-  grid-template-rows: 0.1fr 0.2fr 0.8fr;
+  grid-template-rows: 50px 0.2fr 0.7fr;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  max-width: 90%;
+  height: fit-content;
+  //height: 90%;
+  top: 5%;
+  left: 5%;
   height: fit-content;
   padding: 0.5rem;
   border: 0.15rem solid rgb(10, 10, 10);
   border-radius: 1.2rem;
   background-image: linear-gradient(
     130deg,
-    rgba(0, 0, 0, 0.5) 20%,
-    rgba(50, 50, 50, 0.5)
+    rgba(0, 0, 0, 1) 20%,
+    rgba(50, 50, 50, 1)
   );
-  box-shadow: rgba(10, 10, 50, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  box-shadow: rgba(-10, -10, 20, 0.5) -50px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  &:before, &::after {
+    display: block;
+    content:"";
+    position: absolute;
+    height: inherit;
+    border-radius: 1.2rem;
+    width: 100%;
+    background-color: black;
+    z-index: -1;
+  }
+  &:before {
+    border: 2px solid black;
+    bottom: -15px;
+    right: -10px;
+  }
+  
+  &:after {
+    border: 6px solid black;
+    bottom: -20px;
+    right: -10px;
+  }
 }
 
-#drum-machine-header,
-#display,
+#track-display,
 #drum-controller {
   margin: 0.75rem;
+}
+
+#drum-machine-header {
+  margin: 0 0.75rem;
 }
 
 #drum-machine-header {
@@ -60,19 +88,21 @@ main {
   align-content: center;
   color: whitesmoke;
   font-size: 800;
-  font-size: 39.345px;
+  font-size: 10.345px;
   font-family: 'Montserrat', sans-serif;
   font-stretch: expanded;
+  .logo, .model {
+    font-weight: 800;
+    font-size: 30px;
+  }
   & .logo {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     line-height: 2rem;
     .logo-subtitle {
       color: black;
-      font-size: small;
-      font-weight: 800;
+      font-size: 10px;
       padding: 0 0.15rem;
       line-height: initial;
       font-family: sans-serif;
@@ -81,8 +111,106 @@ main {
   }
 }
 
-#display {
-  // background-color: white;
+#track-display {
+  grid-area: track-display;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: fit-content;
+  #audio-player {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+    .audio-player-display {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      position: relative;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      padding: 0.35rem 0.75rem;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      border: 0.2rem solid rgba(black, 0.4);
+      color: rgba(47, 21, 2, 0.8);
+      border-radius: .5rem;
+      background-color: rgba(39, 60, 50, 0.2);
+      background:
+        linear-gradient(rgba(39, 60, 50, 0.7) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(39, 60, 50, 0.7) 1px, transparent 1px),
+      #333;
+      background-size: 3px 3px;
+      //background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABZJREFUeNpi2r9//38gYGAEESAAEGAAasgJOgzOKCoAAAAASUVORK5CYII=);
+      & .play-button, & #track-name, #duration {
+        opacity: 0;
+        transition: .3s opacity ease-in-out;
+      }
+      #track-name {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      &--turnedOn {
+        @extend .audio-player-display;
+        transition: 2s all ease-in-out;
+        background:
+          linear-gradient(rgba(39, 60, 50, 0.3) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(39, 60, 50, 0.3) 1px, transparent 1px),
+          rgba(255, 111, 0, 0.3);
+        background-size: 3px 3px;
+        & .play-button, & #track-name, #duration {
+          opacity: 1;
+          transition: 2s opacity ease-in-out;
+        }
+      }
+
+      .play-button {
+        //height: 25px;
+        border-width: 18px 20px;
+        border-style: solid;
+        border-color: transparent transparent transparent rgba(47, 21, 2, 0.8);
+        background-color: transparent;
+        cursor: pointer;
+        transition: 2s opacity ease-in-out;
+        z-index: 2;
+        &--active {
+          height: 38px;
+          border-style: double;
+          border-color: rgba(47, 21, 2, 0.8);
+          border-width: 0 0 0 30px;
+          background-color: transparent;
+          cursor: pointer;
+          z-index: 2;
+        }
+      }
+      
+      input#seek-slider {
+        -webkit-appearance: none;
+        position: absolute;
+        top:0;
+        left:0;
+        width: 0%;
+        height: 100%;
+        background-color: rgba(white, 0.2);
+      }
+    }
+    .audio-player-controls {
+      justify-self: flex-end;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      .audio-player-buttons {
+        display: flex;
+        flex-direction: row;
+        //justify-content: space-between;
+      }
+    }
+  }
 }
 
 #drum-controller {
@@ -97,28 +225,97 @@ main {
 
 .drum-pad {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
+  height: 2.5rem;
   box-shadow: 3px 4px 4px rgba(black, 0.7);
   border-radius: 0.25rem;
   font-weight: bold;
   font-size: 1.2rem;
-  color: white;
+  color: rgba(white, 0.65);
   text-shadow: 1px 1px black;
   background-color: rgba(50, 50, 50, 0.5);
   margin: 0.5rem;
   cursor: pointer;
   user-select: none;
+  transition: background-image, box-shadow 2s ease-in-out;
+  &::before, &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
+  &:before {
+    bottom: -5px;
+    left: 5px;
+    background-color: rgba(black, 0.5);
+  }
+  &::after {
+    bottom: -5px;
+    left: 5px;
+    background-color: rgba(black, 0.5);
+  }
+  &--turnedOn {
+    @extend .drum-pad;
+    background-image: radial-gradient(circle, rgba(red, 0.025), rgba(50, 50, 50, 0.5) );
+    box-shadow: rgba(red, 0.35) 0px 2px 14px 0px, rgba(red, 0.5) 0px 2px 18px 0px;
+    transition: background-image, box-shadow 1.3s ease-in-out;
+  }
   &:active {
     color: rgb(235, 123, 123);
     text-shadow: 0.9px 0.9px rgb(61, 46, 46);
     background-image: radial-gradient(circle, rgba(red, 0.8), rgba(50, 50, 50, 0.5) );
     transform: translate(2px, 2px);
-    transform: scale(0.9);
+    transform: scale(0.95);
     box-shadow: rgba(red, 0.35) 0px 2px 6px 0px, rgba(red, 0.5) 0px 2px 18px 0px;
     transition: all 0.2s ease-in-out;
   }
 }
+
+.drum-control-button {
+  @extend .drum-pad;
+  width: 1.5rem;
+  height: 1.5rem;
+  &--active {
+    @extend .drum-pad--turnedOn;
+    background-image: radial-gradient(circle, rgba(red, 0.8), rgba(50, 50, 50, 0.5) );
+    width: 1.5rem;
+    height: 1.5rem;
+    
+  }
+}
+
+input[type=range]#seek-slider {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type=range]#seek-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]#seek-slider:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]#seek-slider::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent; 
+  border-color: transparent;
+  color: transparent;
+}
+
+
+//top: 60%;
+//left: 50%;
+//transform: translate(-50%, -50%);
+
 
 // @media (min-width: 540px) {
 //   #drum-machine {
@@ -127,12 +324,12 @@ main {
 //   }
 // }
 
-// @media (min-width: 769px) {
-//   #drum-machine {
-//     width: 600px;
-//     height: 600px;
-//   }
-// }
+ @media (min-width: 769px) {
+   #drum-machine {
+     width: 600px;
+     height: 600px;
+   }
+ }
 
 // @media (min-width: 1024px) {
 // }

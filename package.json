@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "keywords": [],
+  "license": "MIT",
   "main": "src/index.js",
   "dependencies": {
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "react-icons": "^4.4.0",
     "react-scripts": "4.0.0",
     "sass": "1.52.1"
   },
